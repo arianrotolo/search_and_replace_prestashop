@@ -75,10 +75,8 @@ class Mi_Menu extends Module
     public function hookDisplayBackOfficeHeader()
     {
         echo("hola");
-        if (Tools::getValue('module_name') == $this->name) {
-            $this->context->controller->addCSS($this->_path . 'views/css/menu.css');
-            $this->context->controller->addJS($this->_path . 'views/js/menu.js');
-        }
+        #$this->context->controller->addCSS($this->_path . 'views/css/menu.css');
+        $this->context->controller->addJS($this->_path . 'views/js/menu.js');
     }
 
     public function getContent()

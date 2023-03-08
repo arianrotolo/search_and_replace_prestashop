@@ -1,10 +1,12 @@
-class AdminMiMenuController extends ModuleAdminController
+<?php
+
+class AdminMiMenu extends ModuleAdminController
 {
     public function __construct()
     {
         $this->bootstrap = true;
-        $this->table = '';
-        $this->className = '';
+        $this->table = 'mi_menu';
+        $this->className = 'Mi_Menu';
         $this->lang = false;
         $this->addRowAction('');
         parent::__construct();
