@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+    <name>mi_menu</name>
+    <displayName><![CDATA[Mi Menú]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Agrega un menú personalizado al panel de administración.]]></description>
+    <author><![CDATA[Arian]]></author>
+    <tab><![CDATA[administration]]></tab>
+    <is_configurable>0</is_configurable>
+    <need_instance>0</need_instance>
+    <ps_versions_compliancy>
+        <min>1.7</min>
+        <max>_PS_VERSION_</max>
+    </ps_versions_compliancy>
+    <dependencies>
+        <php>
+            <min>7.1</min>
+            <max>7.3</max>
+        </php>
+    </dependencies>
+    <files>
+        <file path="mi_menu.php" />
+        <file path="views/css/menu.css" />
+        <file path="views/js/menu.js" />
+    </files>
+</module>

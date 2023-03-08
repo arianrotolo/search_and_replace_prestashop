@@ -1,0 +1,28 @@
+#menu li {
+    list-style: none;
+  }
+  
+  #menu li a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 2px;
+    background: #F3F3F3;
+  }
+  
+  .submenu {
+    display: none;
+    background: #EEE;
+  }
+  
+  .submenu li a {
+    font-weight: normal;
+    padding: 5px 10px;
+  }
+  
+  .submenu li a:hover {
+    background: #F3F3F3;
+  }
+  
