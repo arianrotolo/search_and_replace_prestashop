@@ -14,30 +14,33 @@ class AdminIntranetController extends ModuleAdminController
 
     public function postProcess()
     {
-        // Ruta del archivo a modificar
-        #$file_path = '/home/vestatex/pruebas.piscihogar.com/prueba/ejemplo.txt';
         #logDebugMessage("La ruta del archivo es: " + $file_path);
         if (Tools::isSubmit('submit')) {
-            // Obtener la ruta del archivo desde el input file-path
-            $file_path = Tools::getValue('file-path');
-            
+            // Obtener la ruta de la carpeta de archivos desde el input file-path
+            $folder_path = Tools::getValue('file-path');
+
             // Obtener los valores de los inputs del formulario
             $busqueda = Tools::getValue('buscar');
             $reemplazo = Tools::getValue('reemplazar');
 
-            // Código para buscar y reemplazar el texto en el archivo X
-            // Obtener el contenido del archivo
-            $file_content = file_get_contents($file_path);
+            // Obtener todos los archivos de la carpeta
+            $files = glob($folder_path . '/*');
 
-            // Realizar la sustitución del texto
-            $nuevo_contenido = str_replace($busqueda, $reemplazo, $file_content);
+            // Recorrer todos los archivos y buscar/reemplazar el texto
+            foreach ($files as $file) {
+                // Obtener el contenido del archivo
+                $file_content = file_get_contents($file);
 
-            // Escribir el nuevo contenido en el archivo
-            file_put_contents($file_path, $nuevo_contenido);
+                // Realizar la sustitución del texto
+                $nuevo_contenido = str_replace($busqueda, $reemplazo, $file_content);
+
+                // Escribir el nuevo contenido en el archivo
+                file_put_contents($file, $nuevo_contenido);
+            }
 
             // Código para depurar
             $debug_info = array(
-                'file_path' => $file_path,
+                'folder_path' => $folder_path,
                 'busqueda' => $busqueda,
                 'reemplazo' => $reemplazo,
                 'nuevo_contenido' => $nuevo_contenido
@@ -46,29 +49,14 @@ class AdminIntranetController extends ModuleAdminController
 
 
             // Mostrar mensaje de éxito o error
-            $this->confirmations[] = $this->l('Texto reemplazado correctamente');
+            $this->confirmations[] = $this->l('Texto reemplazado correctamente en todos los archivos');
         }
     }
 
     public function displayForm()
     {
-        // Obtener la ruta de la carpeta de archivos
-        $folder_path = _PS_MODULE_DIR_ . 'mi_menu/';
-
-        // Obtener los archivos de la carpeta y sus rutas
-        $files = scandir($folder_path);
-        $file_list = array();
-        foreach ($files as $file) {
-            if ($file != '.' && $file != '..') {
-                $file_list[] = array(
-                    'name' => $file,
-                    'path' => $folder_path . $file
-                );
-            }
-        }
-
-        // Asignar los datos a la vista
-        $this->context->smarty->assign('files', $file_list);
+        // Asignar la ruta del directorio de archivos a la vista
+        $this->context->smarty->assign('folder_path', _PS_MODULE_DIR_ . 'mi_menu/');
 
         return $this->display(__FILE__, 'views/templates/admin/intranet.tpl');
     }
