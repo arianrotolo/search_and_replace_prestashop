@@ -11,7 +11,7 @@
         <label for="reemplazar">Texto a reemplazar</label>
         <input type="text" class="form-control" name="reemplazar" id="reemplazar" size="80" required>
     </div>
-    <button type="submit" name="submit" class="btn btn-primary">Reemplazar</button>
+    <button type="submit" name="submit" class="btn btn-primary">Buscar y reemplazar</button>
 </form>
 <!-- Agrega una etiqueta HTML para mostrar la información de depuración -->
 <!--

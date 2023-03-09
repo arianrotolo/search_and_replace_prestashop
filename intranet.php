@@ -3,18 +3,18 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-class Mi_Menu extends Module
+class Intranet extends Module
 {
     public $tabs = array(
         array(
-            'name' => 'Mi Menu', # nombre del menu en barra lateral
-            'class_name' => 'AdminMiMenu', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (AdminMiMenuController)
+            'name' => 'Intranet', # nombre del menu en barra lateral
+            'class_name' => 'AdminIntranet', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (AdminIntranetController)
             'visible' => true,
             'parent_class_name' => 'AdminParentModulesSf',
         ),
         array(
-            'name' => 'Intranet', # nombre del menu en barra lateral
-            'class_name' => 'AdminIntranet', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (IntranetController)
+            'name' => 'Buscar y reemplazar', # nombre del menu en barra lateral
+            'class_name' => 'AdminBuscarReemplazar', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (IntranetController)
             'visible' => true,
             'parent_class_name' => 'AdminParentModulesSf',
         ),
@@ -22,7 +22,7 @@ class Mi_Menu extends Module
 
     public function __construct()
     {
-        $this->name = 'mi_menu';
+        $this->name = 'intranet';
         $this->tab = 'administration';
         $this->version = '1.0.0';
         $this->author = 'Arian';
@@ -35,7 +35,7 @@ class Mi_Menu extends Module
 
         parent::__construct();
 
-        $this->displayName = 'Mi Menu';
+        $this->displayName = 'Intranet';
         $this->description = 'Agrega un menu personalizado al panel de administración';
         $this->confirmUninstall = '¿Estás seguro de que deseas desinstalar el módulo?';
     }
@@ -75,7 +75,7 @@ class Mi_Menu extends Module
         $html .= '<p>Este módulo agrega un menu personalizado al panel de administración.</p>';
 
         // Agregar enlace al formulario de Intranet
-        $html .= '<a href="' . $this->context->link->getAdminLink('AdminIntranet') . '">' . $this->l('Ir al formulario de Intranet') . '</a>';
+        $html .= '<a href="' . $this->context->link->getAdminLink('AdminBuscarReemplazar') . '">' . $this->l('Ir al formulario de Intranet') . '</a>';
 
         return $html;
     }

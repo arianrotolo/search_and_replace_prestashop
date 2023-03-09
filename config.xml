@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-    <name>mi_menu</name>
-    <displayName><![CDATA[Mi Menú]]></displayName>
+    <name>intranet</name>
+    <displayName><![CDATA[Intranet]]></displayName>
     <version><![CDATA[1.0.0]]></version>
-    <description><![CDATA[Agrega un menú personalizado al panel de administración.]]></description>
+    <description><![CDATA[Buscar y reemplazar texto desde el panel de administración.]]></description>
     <author><![CDATA[Arian]]></author>
     <tab><![CDATA[administration]]></tab>
     <is_configurable>0</is_configurable>
@@ -19,11 +19,11 @@
         </php>
     </dependencies>
     <files>
-        <file path="mi_menu.php" />
+        <file path="intranet.php" />
         <file path="views/css/menu.css" />
         <file path="views/js/menu.js" />
         <file path="views/templates/admin/menu.tpl" />
-        <file path="controllers/admin/AdminMiMenuController.php" />
+        <file path="controllers/admin/AdminBuscarReemplazarController.php" />
         <file path="controllers/admin/AdminIntranetController.php" />
     </files>
 </module>
