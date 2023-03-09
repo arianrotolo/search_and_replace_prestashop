@@ -14,7 +14,6 @@ class AdminIntranetController extends ModuleAdminController
 
     public function postProcess()
     {
-        #logDebugMessage("La ruta del archivo es: " + $file_path);
         if (Tools::isSubmit('submit')) {
             // Obtener la ruta de la carpeta de archivos desde el input file-path
             $folder_path = Tools::getValue('file-path');
