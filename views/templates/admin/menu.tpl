@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="panel-heading">
-        <i class="icon-list"></i> Mi Menu
+        <i class="icon-list"></i> Mi Menu - {$mensaje}
     </div>
     <div class="panel-body">
         <ul class="list-group">
