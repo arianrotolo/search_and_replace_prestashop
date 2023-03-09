@@ -20,9 +20,10 @@
     </dependencies>
     <files>
         <file path="mi_menu.php" />
-        <file path="AdminMiMenu.php" />
         <file path="views/css/menu.css" />
         <file path="views/js/menu.js" />
         <file path="views/templates/admin/menu.tpl" />
+        <file path="controllers/admin/AdminMiMenuController.php" />
+        <file path="controllers/admin/AdminIntranetController.php" />
     </files>
 </module>

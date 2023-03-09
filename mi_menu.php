@@ -5,6 +5,21 @@ if (!defined('_PS_VERSION_')) {
 
 class Mi_Menu extends Module
 {
+    public $tabs = array(
+        array(
+            'name' => 'Mi Menu',
+            'class_name' => 'AdminMiMenu', #$this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (AdminMiMenuController)
+            'visible' => true,
+            'parent_class_name' => 'AdminParentModulesSf',
+        ),
+        array(
+            'name' => 'Intranet',
+            'class_name' => 'AdminIntranet', #$this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (IntranetController)
+            'visible' => true,
+            'parent_class_name' => 'AdminParentModulesSf',
+        ),
+    );
+
     public function __construct()
     {
         $this->name = 'mi_menu';
@@ -17,7 +32,9 @@ class Mi_Menu extends Module
             'max' => _PS_VERSION_
         ];
         $this->bootstrap = true;
+
         parent::__construct();
+
         $this->displayName = 'Mi Menu';
         $this->description = 'Agrega un menu personalizado al panel de administración';
         $this->confirmUninstall = '¿Estás seguro de que deseas desinstalar el módulo?';
@@ -27,55 +44,17 @@ class Mi_Menu extends Module
     {
         if (
             parent::install() &&
-            $this->registerHook('displayBackOfficeHeader') &&
-            $this->installTab()
+            $this->registerHook('displayBackOfficeHeader')
         ) {
             return true;
         }
 
         return false;
     }
-
-    public function installTab()
-    {
-        $tab = new Tab();
-        $tab->class_name = 'AdminMiMenu';
-        $tab->module = $this->name;
-        $tab->id_parent = (int)Tab::getIdFromClassName('AdminAdvancedParameters');
-        $tab->active = 1;
-
-        foreach (Language::getLanguages() as $lang) {
-            $tab->name[$lang['id_lang']] = $this->l('Mi Menu');
-        }
-
-        return $tab->save();
-    }
-
-    public function uninstall()
-    {
-        if (
-            parent::uninstall() &&
-            $this->uninstallTab()
-        ) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function uninstallTab()
-    {
-        $id_tab = (int) Tab::getIdFromClassName('AdminMiMenu');
-        $tab = new Tab($id_tab);
-        $tab->delete();
-        return true;
-    }
-
 
     public function hookDisplayBackOfficeHeader()
     {
-        echo("hola");
-        #$this->context->controller->addCSS($this->_path . 'views/css/menu.css');
+        $this->context->controller->addCSS($this->_path . 'views/css/menu.css');
         $this->context->controller->addJS($this->_path . 'views/js/menu.js');
     }
 
@@ -83,6 +62,10 @@ class Mi_Menu extends Module
     {
         $html = '<h2>' . $this->displayName . '</h2>';
         $html .= '<p>Este módulo agrega un menu personalizado al panel de administración.</p>';
+
+        // Agregar enlace al formulario de Intranet
+        $html .= '<a href="' . $this->context->link->getAdminLink('AdminIntranet') . '">' . $this->l('Ir al formulario de Intranet') . '</a>';
+
         return $html;
     }
 }
