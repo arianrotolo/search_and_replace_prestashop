@@ -51,12 +51,4 @@ class AdminBuscarReemplazarController extends ModuleAdminController
             $this->confirmations[] = $this->l('Texto reemplazado correctamente en todos los archivos');
         }
     }
-
-    public function displayForm()
-    {
-        // Asignar la ruta del directorio de archivos a la vista
-        $this->context->smarty->assign('folder_path', _PS_MODULE_DIR_ . 'intranet/');
-
-        return $this->display(__FILE__, 'views/templates/admin/intranet.tpl');
-    }
 }
