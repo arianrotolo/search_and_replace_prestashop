@@ -7,14 +7,14 @@ class Mi_Menu extends Module
 {
     public $tabs = array(
         array(
-            'name' => 'Mi Menu',
-            'class_name' => 'AdminMiMenu', #$this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (AdminMiMenuController)
+            'name' => 'Mi Menu', # nombre del menu en barra lateral
+            'class_name' => 'AdminMiMenu', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (AdminMiMenuController)
             'visible' => true,
             'parent_class_name' => 'AdminParentModulesSf',
         ),
         array(
-            'name' => 'Intranet',
-            'class_name' => 'AdminIntranet', #$this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (IntranetController)
+            'name' => 'Intranet', # nombre del menu en barra lateral
+            'class_name' => 'AdminIntranet', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (IntranetController)
             'visible' => true,
             'parent_class_name' => 'AdminParentModulesSf',
         ),
