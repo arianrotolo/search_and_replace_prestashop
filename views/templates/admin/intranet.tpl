@@ -1,12 +1,18 @@
-<div class="container">
-    <h1>Formulario Intranet</h1>
-    <form action="{$smarty.server.PHP_SELF|escape:'html':'UTF-8'}" method="post">
-        <label for="input1">Input 1</label>
-        <input type="text" name="input1" id="input1" />
+<form action="" method="post">
+    <div>
+        <label for="buscar">Buscar:</label>
+        <input type="text" name="buscar" id="buscar" />
+    </div>
+    <div>
+        <label for="reemplazar">Reemplazar con:</label>
+        <input type="text" name="reemplazar" id="reemplazar" />
+    </div>
+    <div>
+        <button type="submit" name="submit">Buscar y Reemplazar</button>
+    </div>
+</form>
+<!-- Agrega una etiqueta HTML para mostrar la información de depuración -->
 
-        <label for="input2">Input 2</label>
-        <input type="text" name="input2" id="input2" />
-
-        <input type="submit" name="submit" value="Enviar" />
-    </form>
+<div>
+    <pre>{print_r($debug_info)}</pre>
 </div>

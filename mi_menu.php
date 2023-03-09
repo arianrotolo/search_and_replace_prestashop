@@ -52,6 +52,17 @@ class Mi_Menu extends Module
         return false;
     }
 
+    public function uninstall()
+    {
+        if (!parent::uninstall()) {
+            return false;
+        }
+
+        // Aquí puedes agregar cualquier otra acción que quieras que se realice al desinstalar el módulo
+
+        return true;
+    }
+
     public function hookDisplayBackOfficeHeader()
     {
         $this->context->controller->addCSS($this->_path . 'views/css/menu.css');
