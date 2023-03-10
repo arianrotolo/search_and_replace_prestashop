@@ -1,5 +1,13 @@
 <h1>Ruta de carpeta: {$path}</h1>
 
+<form method="post" name="change_directory">
+    <input type="text" name="directory_clicked" id="directory_clicked" value="{$path}" size="80">
+</form>
+
+<div>
+    <button onclick="document.getElementById('directory_clicked').value='{dirname($path)|urlencode}'; document.forms['change_directory'].submit();">Atrás</button>
+</div>
+
 <table>
     <thead>
         <tr>
@@ -7,10 +15,11 @@
         </tr>
     </thead>
     <tbody>
-        {foreach from=$directories item=dir}
-            <tr>
-                <td><a href=""><i class="icon-folder-close"></i> {{ dir }}</a></td>
-            </tr>
+        {foreach $directories as $dir}
+        <tr>
+            <td><a href="#" onclick="document.getElementById('directory_clicked').value='{$dir|urlencode}'; document.forms['change_directory'].submit();"><i class="icon-folder-close"></i> {$dir}</a></td>
+        </td>
+        </tr>
         {/foreach}
     </tbody>
 </table>
@@ -22,27 +31,14 @@
         </tr>
     </thead>
     <tbody>
-        {foreach from=$files item=file}
-            <tr>
-                <td><a href="{$path}/{$file}" target="_blank"><i class="icon-file"></i> {$file}</a></td>
-            </tr>
+        {foreach $files as $file}
+        <tr>
+            <td><a href="{$base_url}{$file}" target="_blank"><i class="icon-file"></i> {$file}</a></td>
+        </tr>
         {/foreach}
     </tbody>
 </table>
 
 <div>
-    <a href="{if $pagination.page > 1}{$link->getAdminLink('AdminFiles', true, array('path' => $path, 'page' => $pagination.page - 1, 'limit' => $pagination.limit))}{else}#"{/if}>&laquo; Previous</a>
-    <span>Page {$pagination.page} of {$pagination.total_pages}</span>
-    <a href="{if $pagination.page < $pagination.total_pages}{$link->getAdminLink('AdminFiles', true, array('path' => $path, 'page' => $pagination.page + 1, 'limit' => $pagination.limit))}{else}#"{/if}>Next &raquo;</a>
-    <form method="GET" action="{$link->getAdminLink('AdminFiles', true)}">
-        <label for="limit">Show:</label>
-        <select name="limit" id="limit">
-            <option value="10"{if $pagination.limit == 10} selected{/if}>10</option>
-            <option value="25"{if $pagination.limit == 25} selected{/if}>25</option>
-            <option value="50"{if $pagination.limit == 50} selected{/if}>50</option>
-            <option value="100"{if $pagination.limit == 100} selected{/if}>100</option>
-        </select>
-        <input type="hidden" name="path" value="{$path}">
-        <input type="submit" value="Go">
-    </form>
+    <pre>{print_r($link)}</pre>
 </div>
