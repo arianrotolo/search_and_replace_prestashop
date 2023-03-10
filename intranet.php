@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -7,8 +8,8 @@ class Intranet extends Module
 {
     public $tabs = array(
         array(
-            'name' => 'Intranet', # nombre del menu en barra lateral
-            'class_name' => 'AdminIntranet', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (AdminIntranetController)
+            'name' => 'Admin Files', # nombre del menu en barra lateral
+            'class_name' => 'AdminFiles', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (AdminFilesController)
             'visible' => true,
             'parent_class_name' => 'AdminParentModulesSf',
         ),
@@ -35,8 +36,8 @@ class Intranet extends Module
 
         parent::__construct();
 
-        $this->displayName = 'Intranet';
-        $this->description = 'Agrega un menu personalizado al panel de administración';
+        $this->displayName = 'Intranet'; #nombre como aparece en el module manager
+        $this->description = 'Agrega un menu personalizado al panel de administración'; #descripcion como aparece en el module manager
         $this->confirmUninstall = '¿Estás seguro de que deseas desinstalar el módulo?';
     }
 
@@ -75,7 +76,8 @@ class Intranet extends Module
         $html .= '<p>Este módulo agrega un menu personalizado al panel de administración.</p>';
 
         // Agregar enlace al formulario de Intranet
-        $html .= '<a href="' . $this->context->link->getAdminLink('AdminBuscarReemplazar') . '">' . $this->l('Ir al formulario de Intranet') . '</a>';
+        $html .= '<a href="' . $this->context->link->getAdminLink('AdminBuscarReemplazar') . '">' . $this->l('Ir a Buscar y Reemplazar') . '</a><br>';
+        $html .= '<a href="' . $this->context->link->getAdminLink('AdminFiles') . '">' . $this->l('Ir al formulario de Ficheros') . '</a>';
 
         return $html;
     }

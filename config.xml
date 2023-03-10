@@ -22,8 +22,9 @@
         <file path="intranet.php" />
         <file path="views/css/menu.css" />
         <file path="views/js/menu.js" />
-        <file path="views/templates/admin/menu.tpl" />
+        <file path="views/templates/admin/buscaryreemplazar.tpl" />
+        <file path="views/templates/admin/files.tpl" />
         <file path="controllers/admin/AdminBuscarReemplazarController.php" />
-        <file path="controllers/admin/AdminIntranetController.php" />
+        <file path="controllers/admin/AdminFilesController.php" />
     </files>
 </module>

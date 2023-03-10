@@ -9,7 +9,7 @@ class AdminBuscarReemplazarController extends ModuleAdminController
 
     public function renderList()
     {
-        return $this->module->display($this->module->name, 'views/templates/admin/intranet.tpl');
+        return $this->module->display($this->module->name, 'views/templates/admin/buscaryreemplazar.tpl');
     }
 
     public function postProcess()
@@ -22,33 +22,63 @@ class AdminBuscarReemplazarController extends ModuleAdminController
             $busqueda = Tools::getValue('buscar');
             $reemplazo = Tools::getValue('reemplazar');
 
-            // Obtener todos los archivos de la carpeta
-            $files = glob($folder_path . '/*');
-
-            // Recorrer todos los archivos y buscar/reemplazar el texto
-            foreach ($files as $file) {
-                // Obtener el contenido del archivo
-                $file_content = file_get_contents($file);
-
-                // Realizar la sustitución del texto
-                $nuevo_contenido = str_replace($busqueda, $reemplazo, $file_content);
-
-                // Escribir el nuevo contenido en el archivo
-                file_put_contents($file, $nuevo_contenido);
-            }
-
-            // Código para depurar
-            $debug_info = array(
-                'folder_path' => $folder_path,
-                'busqueda' => $busqueda,
-                'reemplazo' => $reemplazo,
-                'nuevo_contenido' => $nuevo_contenido
-            );
-            $this->context->smarty->assign('debug_info', $debug_info);
-
-
-            // Mostrar mensaje de éxito o error
-            $this->confirmations[] = $this->l('Texto reemplazado correctamente en todos los archivos');
+            // Llamar a la función buscarReemplazarTexto()
+            $this->buscarReemplazarTexto($folder_path, $busqueda, $reemplazo);
         }
+    }
+
+    public function buscarReemplazarTexto($folder_path, $busqueda, $reemplazo)
+    {
+        if (!is_dir($folder_path)) {
+            return 'El directorio especificado no existe';
+        }
+
+        // Obtener todos los archivos de la carpeta
+        $files = glob($folder_path . '/*');
+
+        // Recorrer todos los archivos y buscar/reemplazar el texto
+        $encontrado = false;
+
+        // Recorrer todos los archivos y buscar/reemplazar el texto
+        foreach ($files as $file) {
+            // Obtener el contenido del archivo
+            $file_content = file_get_contents($file);
+
+            // Realizar la sustitución del texto
+            $nuevo_contenido = str_replace($busqueda, $reemplazo, $file_content);
+
+            // Escribir el nuevo contenido en el archivo
+            file_put_contents($file, $nuevo_contenido);
+
+            // Establecer la variable de control en true si se encontró un archivo
+            if (strpos($nuevo_contenido, $reemplazo) !== false) {
+                $encontrado = true;
+            }
+        }
+
+        // Verificar si se encontraron archivos
+        if ($encontrado) {
+            // Mostrar mensaje de éxito
+            $this->confirmations[] = $this->l('Texto reemplazado correctamente en todos los archivos');
+        } else {
+            // Mostrar mensaje de error
+            $this->errors[] = $this->l('No se encontraron archivos que coincidan con la búsqueda');
+        }
+
+        // Código para depurar
+        $debug_info = array(
+            'folder_path' => $folder_path,
+            'busqueda' => $busqueda,
+            'reemplazo' => $reemplazo,
+            'nuevo_contenido' => $nuevo_contenido
+        );
+        $this->context->smarty->assign('debug_info', $debug_info);
+
+        return true;
+    }
+
+    public function hola()
+    {
+        
     }
 }

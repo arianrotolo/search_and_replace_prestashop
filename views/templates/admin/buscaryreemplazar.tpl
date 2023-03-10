@@ -13,9 +13,3 @@
     </div>
     <button type="submit" name="submit" class="btn btn-primary">Buscar y reemplazar</button>
 </form>
-<!-- Agrega una etiqueta HTML para mostrar la información de depuración -->
-<!--
-<div>
-    <pre>{print_r($debug_info)}</pre>
-</div>
--->
