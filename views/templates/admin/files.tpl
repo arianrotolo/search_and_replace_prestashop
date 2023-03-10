@@ -1,4 +1,4 @@
-<h1>Folder Path: {$path}</h1>
+<h1>Ruta de carpeta: {$path}</h1>
 
 <table>
     <thead>
