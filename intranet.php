@@ -37,7 +37,7 @@ class Intranet extends Module
         parent::__construct();
 
         $this->displayName = 'Intranet'; #nombre como aparece en el module manager
-        $this->description = 'Agrega un menu personalizado al panel de administración'; #descripcion como aparece en el module manager
+        $this->description = 'Navegador de archivos con capacidad de buscar y reemplazar texto desde el panel de administración'; #descripcion como aparece en el module manager
         $this->confirmUninstall = '¿Estás seguro de que deseas desinstalar el módulo?';
     }
 
@@ -73,7 +73,7 @@ class Intranet extends Module
     public function getContent()
     {
         $html = '<h2>' . $this->displayName . '</h2>';
-        $html .= '<p>Este módulo agrega un menu personalizado al panel de administración.</p>';
+        $html .= '<p>Navegador de archivos con capacidad de buscar y reemplazar texto desde el panel de administración.</p>';
 
         // Agregar enlace al formulario de Intranet
         $html .= '<a href="' . $this->context->link->getAdminLink('AdminBuscarReemplazar') . '">' . $this->l('Ir a Buscar y Reemplazar') . '</a><br>';
