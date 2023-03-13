@@ -51,7 +51,7 @@
             <form method="post">
 
                 <div class="form-group row">
-                    <label for="file-path">Directorio de las plantillas email</label>
+                    <label for="emails-path" style="text-align: left">Directorio de las plantillas email</label>
                     <input type="text" class="form-control" name="emails-path" id="emails-path"
                         value="/home/vestatex/pruebas.piscihogar.com/prueba/" size="80" style="text-align: left" required>
                 </div>
