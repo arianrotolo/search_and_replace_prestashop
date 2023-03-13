@@ -20,7 +20,7 @@ class AdminFilesController extends ModuleAdminController
 
         // Si el directorio ha sido clickeado, actualizamos el path
         if ($directory_clicked) {
-            $path .= '/' . $directory_clicked;
+            $path = $directory_clicked;
         }
 
         $link = Context::getContext()->link;
