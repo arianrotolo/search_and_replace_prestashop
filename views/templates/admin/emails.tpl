@@ -49,11 +49,11 @@
         <div class="form-group row">
             <h2>Banner 1</h2>
             <form method="post">
-                
+
                 <div class="form-group row">
                     <label for="file-path">Directorio de las plantillas email</label>
                     <input type="text" class="form-control" name="emails-path" id="emails-path"
-                        value="/home/vestatex/pruebas.piscihogar.com/prueba/" size="80" required>
+                        value="/home/vestatex/pruebas.piscihogar.com/prueba/" size="80" style="text-align: left" required>
                 </div>
                 <div class="form-group row">
                     <label style="text-align: left">Ruta de imagen 1 actual:</label>
@@ -124,9 +124,6 @@
     </div>
 
     <div class="panel-footer">
-        <pre>{print_r($emails_path)}</pre>
-        <pre>{print_r($busqueda_url)}</pre>
-        <pre>{print_r($reemplazo_url)}</pre>
         <pre>{print_r($debug_info)}</pre>
     </div>
 

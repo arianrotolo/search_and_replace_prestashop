@@ -33,7 +33,6 @@ class AdminPlantillasEmailsController extends ModuleAdminController
             // Obtener la ruta de la carpeta de archivos desde el input file-path
             $emails_path = Tools::getValue('emails-path');
 
-            echo ($emails_path);
             // Obtener los valores de los inputs del formulario
             $busqueda_url = Tools::getValue('img-url1');
             $reemplazo_url = Tools::getValue('img-url1-remplazar');
