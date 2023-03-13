@@ -1,5 +1,7 @@
 console.log("menu.js cargado correctamente");
 
-function setImageUrl(inputId, imageUrl) {
-    document.getElementById(inputId).value = imageUrl;
+function setImageUrl(imgId, inputUrl) {
+    url = document.getElementById(inputUrl).value;
+    console.log(url);
+    document.getElementById(imgId).src = url;
 }

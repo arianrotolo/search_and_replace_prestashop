@@ -38,6 +38,7 @@ class AdminBuscarReemplazarController extends ModuleAdminController
 
         // Recorrer todos los archivos y buscar/reemplazar el texto
         $encontrado = false;
+        $reemplazos_archivos = 0; // Inicializar el contador de reemplazos para archivos
 
         // Recorrer todos los archivos y buscar/reemplazar el texto
         foreach ($files as $file) {
@@ -53,13 +54,14 @@ class AdminBuscarReemplazarController extends ModuleAdminController
             // Establecer la variable de control en true si se encontró un archivo
             if (strpos($nuevo_contenido, $reemplazo) !== false) {
                 $encontrado = true;
+                $reemplazos_archivos++; // Aumentar el contador de reemplazos
             }
         }
 
         // Verificar si se encontraron archivos
         if ($encontrado) {
             // Mostrar mensaje de éxito
-            $this->confirmations[] = $this->l('Texto reemplazado correctamente en todos los archivos');
+            $this->confirmations[] = $this->l('Texto reemplazado correctamente en') . ' ' . $reemplazos_archivos . ' ' . $this->l('archivos');
         } else {
             // Mostrar mensaje de error
             $this->errors[] = $this->l('No se encontraron archivos que coincidan con la búsqueda');
@@ -70,15 +72,11 @@ class AdminBuscarReemplazarController extends ModuleAdminController
             'folder_path' => $folder_path,
             'busqueda' => $busqueda,
             'reemplazo' => $reemplazo,
+            'reemplazos_archivos' => $reemplazos_archivos,
             'nuevo_contenido' => $nuevo_contenido
         );
         $this->context->smarty->assign('debug_info', $debug_info);
 
         return true;
-    }
-
-    public function hola()
-    {
-        
     }
 }

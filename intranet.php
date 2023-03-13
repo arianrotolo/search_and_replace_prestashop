@@ -14,8 +14,14 @@ class Intranet extends Module
             'parent_class_name' => 'AdminParentModulesSf',
         ),
         array(
-            'name' => 'Buscar y reemplazar', # nombre del menu en barra lateral
+            'name' => 'Buscar y Reemplazar', # nombre del menu en barra lateral
             'class_name' => 'AdminBuscarReemplazar', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (IntranetController)
+            'visible' => true,
+            'parent_class_name' => 'AdminParentModulesSf',
+        ),
+        array(
+            'name' => 'Emails Plantillas', # nombre del menu en barra lateral
+            'class_name' => 'AdminPlantillasEmails', # $this->class_name es propiedad de la clase Tab, se utiliza para definir la clase que controlara el comportamiento de la pestaña del menú. (IntranetController)
             'visible' => true,
             'parent_class_name' => 'AdminParentModulesSf',
         ),
@@ -76,8 +82,9 @@ class Intranet extends Module
         $html .= '<p>Navegador de archivos con capacidad de buscar y reemplazar texto desde el panel de administración.</p>';
 
         // Agregar enlace al formulario de Intranet
-        $html .= '<a href="' . $this->context->link->getAdminLink('AdminBuscarReemplazar') . '">' . $this->l('Ir a Buscar y Reemplazar') . '</a><br>';
-        $html .= '<a href="' . $this->context->link->getAdminLink('AdminFiles') . '">' . $this->l('Ir al formulario de Ficheros') . '</a>';
+        $html .= '<a href="' . $this->context->link->getAdminLink('AdminBuscarReemplazar') . '">' . $this->l('Ir a buscar y reemplazar') . '</a><br>';
+        $html .= '<a href="' . $this->context->link->getAdminLink('AdminFiles') . '">' . $this->l('Ir a navegador de ficheros') . '</a><br>';
+        $html .= '<a href="' . $this->context->link->getAdminLink('AdminPlantillasEmails') . '">' . $this->l('Ir a plantillas emails') . '</a><br>';
 
         return $html;
     }

@@ -26,5 +26,6 @@
         <file path="views/templates/admin/files.tpl" />
         <file path="controllers/admin/AdminBuscarReemplazarController.php" />
         <file path="controllers/admin/AdminFilesController.php" />
+        <file path="controllers/admin/AdminPlantillasEmailsController.php" />
     </files>
 </module>

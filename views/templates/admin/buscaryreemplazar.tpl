@@ -1,7 +1,11 @@
 <div class="panel">
 
     <div class="panel-heading">
-        <i class="icon-search"></i> Buscar y reemplazar
+        <div class="card-header">
+            <h3 class="card-header">
+                <i class="icon-search"></i> Buscar y reemplazar
+            </h3>
+        </div>
     </div>
 
     <div class="form-wrapper">
